@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">ArtHelper</string>
+    <string name="btn_1">Боевой порядок</string>
+    <string name="btn_2">Условия стрельбы</string>
+    <string name="btn_3">Огневая задача</string>
+
+    <string name="tab1_comord">Средства поражения</string>
+    <string name="tab1_system">Система</string>
+    <string name="tab1_packet">Снаряд</string>
+    <string name="tab1_charge">Заряд</string>
+    <string name="tab1_fuse">Взрыватель</string>
+    <string name="tab1_range">Дальности:</string>
+    <string name="tab1_max">Максимальная:</string>
+    <string name="tab1_ricoshet">Рикошетная:</string>
+    <string name="tab1_mort">Мортирная:</string>
+
+    <string-array name="system_array">
+        <item>2Б11</item>
+    </string-array>
+    <string-array name="packet_array">
+        <item>ОФ45</item>
+    </string-array>
+    <string-array name="charge_array">
+        <item>Полный</item>
+        <item>Уменьшенный</item>
+        <item>Первый</item>
+        <item>Второй</item>
+    </string-array>
+    <string-array name="fuse_array">
+        <item>РГМ2</item>
+    </string-array>
+
+    <string name="tab2_comord"> Координаты КНП и ОП</string>
+</resources>
