@@ -5,6 +5,7 @@
     <string name="btn_3">Огневая задача</string>
 
     <string name="tab1_comord">Средства поражения</string>
+    <string name="tab2_comord"> Координаты КНП и ОП</string>
     <string name="tab1_system">Система</string>
     <string name="tab1_packet">Снаряд</string>
     <string name="tab1_charge">Заряд</string>
@@ -30,5 +31,9 @@
         <item>РГМ2</item>
     </string-array>
 
-    <string name="tab2_comord"> Координаты КНП и ОП</string>
+    <string name="tab1_shootcond">Наземные метеоусловия</string>
+    <string name="tab2_shootcond">Баллистические условия</string>
+    <string name="tab3_shootcond">Определение координат цели</string>
+    <string name="tab4_shootcond">Поправки</string>
+
 </resources>

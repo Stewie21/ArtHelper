@@ -2,20 +2,15 @@ package com.example.arteme.myapplication;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
-import com.example.arteme.myapplication.tabs.TabsPagerFrAdComOrd;
+import com.example.arteme.myapplication.tabs.TabsPagerFrAdShootCond;
 
-public class ActivityComOrd extends AppCompatActivity {
+public class ActivityShootCond extends AppCompatActivity {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -24,7 +19,7 @@ public class ActivityComOrd extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_comord);
+        setContentView(R.layout.activity_shootcond);
 
         initToolbar();
         initNavigationView();
@@ -33,24 +28,24 @@ public class ActivityComOrd extends AppCompatActivity {
     }
 
     private void initToolbar(){
-        toolbar = (Toolbar) findViewById(R.id.toolbarComOrd);
-        toolbar.setTitle("Боевой порядок");
+        toolbar = (Toolbar) findViewById(R.id.toolbarShootCond);
+        toolbar.setTitle("Условия стрельбы");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     private void initNavigationView(){
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_comord);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_shootcond);
     }
 
     private void initTabs() {
 
-        viewPager = (ViewPager) findViewById(R.id.viewPagerComOrd);
-        TabsPagerFrAdComOrd adapter = new TabsPagerFrAdComOrd(getSupportFragmentManager());
+        viewPager = (ViewPager) findViewById(R.id.viewPagerShootCond);
+        TabsPagerFrAdShootCond adapter = new TabsPagerFrAdShootCond(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayoutComOrd);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayoutShootCond);
         tabLayout.setupWithViewPager(viewPager);
     }
 
@@ -62,5 +57,4 @@ public class ActivityComOrd extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

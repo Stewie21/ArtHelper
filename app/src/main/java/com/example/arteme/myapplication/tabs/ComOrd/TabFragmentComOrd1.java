@@ -23,6 +23,7 @@ import com.example.arteme.myapplication.R;
 import java.util.ArrayList;
 
 public class TabFragmentComOrd1 extends  Fragment {
+
     private View view;
     private static final int LAYOUT = R.layout.tab1_comord;
 

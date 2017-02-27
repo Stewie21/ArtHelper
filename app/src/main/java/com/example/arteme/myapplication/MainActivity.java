@@ -9,8 +9,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +18,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendComOrd(View view) {
         Intent intent = new Intent(this, ActivityComOrd.class);
+        startActivity(intent);
+    }
+
+    public void sendShootCond(View view){
+        Intent intent = new Intent(this, ActivityShootCond.class);
         startActivity(intent);
     }
 
