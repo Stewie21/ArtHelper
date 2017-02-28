@@ -3,6 +3,9 @@
     <string name="btn_1">Боевой порядок</string>
     <string name="btn_2">Условия стрельбы</string>
     <string name="btn_3">Огневая задача</string>
+    <string name="btn_sc_compose">Составить</string>
+    <string name="btn_sc_fill">Заполнить</string>
+    <string name="btn_sc_download">Загрузить</string>
 
     <string name="tab1_comord">Средства поражения</string>
     <string name="tab2_comord"> Координаты КНП и ОП</string>
@@ -35,5 +38,13 @@
     <string name="tab2_shootcond">Баллистические условия</string>
     <string name="tab3_shootcond">Определение координат цели</string>
     <string name="tab4_shootcond">Поправки</string>
+    <string name="tab1_press">Давление:</string>
+    <string name="tab1_temper">Температура:</string>
+    <string name="tab1_direction">Направление ветра:</string>
+    <string-array name="wind_speed_array">
+        <item>Скорость ветра:</item>
+        <item>Дальность сноса пуль:</item>
+    </string-array>
+    <string name="tab1_height_meteo">Высота метеопоста:</string>
 
 </resources>
