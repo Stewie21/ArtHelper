@@ -4,6 +4,8 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 
+import com.example.arteme.myapplication.weather.Interfaces.IYahooRespondReceiver;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,8 +19,13 @@ import java.net.URLConnection;
 
 public class YahooWeatherAsyncTask extends AsyncTask<Location, Void, Channel> {
 
+    private IYahooRespondReceiver mIYahooRespondReceiver;
     private Location mLocation;
     private Exception error;
+
+    public YahooWeatherAsyncTask(IYahooRespondReceiver iYahooRespondReceiver) {
+        mIYahooRespondReceiver = iYahooRespondReceiver;
+    }
 
     @Override
     protected Channel doInBackground(Location... locations) {
@@ -27,7 +34,7 @@ public class YahooWeatherAsyncTask extends AsyncTask<Location, Void, Channel> {
 
         //String YQL = String.format("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"%s\") and u='" + unit + "'", location);
 
-        String YQL = "select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text=\"(" + mLocation.getLatitude() + "," + mLocation.getLongitude() + ")\") and u='c'";
+        String YQL = "select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text=\"(" + mLocation.getLatitude() + "," + mLocation.getLongitude() + ")\") and u='f'";
         String endpoint = String.format("https://query.yahooapis.com/v1/public/yql?q=%s&format=json", Uri.encode(YQL));
 
         try {
@@ -76,6 +83,10 @@ public class YahooWeatherAsyncTask extends AsyncTask<Location, Void, Channel> {
 
         @Override
     protected void onPostExecute(Channel channel) {
-        super.onPostExecute(channel);
+            if (channel == null && error != null) {
+                mIYahooRespondReceiver.onReceiveFailureRespond(error);
+            } else {
+                mIYahooRespondReceiver.onReceiveSuccessRespond(channel);
+            }
     }
 }
