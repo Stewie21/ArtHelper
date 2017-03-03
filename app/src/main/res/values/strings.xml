@@ -47,4 +47,16 @@
     </string-array>
     <string name="tab1_height_meteo">Высота метеопоста:</string>
 
+    <string name="tab2_temper_charge">Температура заряда:</string>
+    <string name="tab2_vo_sum">Vo сум:</string>
+    <string name="tab3_dk">Дк:</string>
+    <string name="tab3_ac">Aц:</string>
+    <string name="btn_pgz">ПГЗ</string>
+
+    <string name="tab4_opor">Опорн.</string>
+    <string name="tab4_range">Дальность</string>
+    <string name="tab4_direction">Напр-ние</string>
+    <string name="tab4_in_direction">В направлении:</string>
+    <string name="btn_calculate">Расчитать</string>
+
 </resources>
