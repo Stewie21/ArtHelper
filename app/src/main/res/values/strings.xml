@@ -58,5 +58,10 @@
     <string name="tab4_direction">Напр-ние</string>
     <string name="tab4_in_direction">В направлении:</string>
     <string name="btn_calculate">Расчитать</string>
+    <string name="tab4_meteo_sr">Метеосредний</string>
+    <string name="tab4_ddchm">ддччм</string>
+    <string name="tab4_h_dmk">выс ДМК</string>
+    <string name="tab4_press">давл</string>
+    <string name="tab4_temper">темп</string>
 
 </resources>

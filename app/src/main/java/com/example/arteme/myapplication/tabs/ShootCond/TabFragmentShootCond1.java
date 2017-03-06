@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.example.arteme.myapplication.R;
@@ -15,6 +17,9 @@ public class TabFragmentShootCond1 extends Fragment {
 
     private static final int LAYOUT = R.layout.tab1_shootcond;
     private View view;
+    private Button btnSССompose;
+    private LinearLayout eathContitionsLayout;
+    private LinearLayout meteoSrLayout;
 
     public static TabFragmentShootCond1 getInstance(){
         Bundle args = new Bundle();
@@ -28,7 +33,13 @@ public class TabFragmentShootCond1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanseState){
         view = inflater.inflate(LAYOUT, container, false);
+        eathContitionsLayout = (LinearLayout)view.findViewById(R.id.linearEathConditions);
+        meteoSrLayout = (LinearLayout)view.findViewById(R.id.linearMeteoSr);
         initSpinner();
+        initButtons();
+        eathContitionsLayout.setVisibility(LinearLayout.VISIBLE);
+        meteoSrLayout.setVisibility(LinearLayout.GONE);
+
         return view;
     }
 
@@ -42,5 +53,18 @@ public class TabFragmentShootCond1 extends Fragment {
 
         spinnerWindSpeed.setAdapter(adapterWindSpeed);
 
+    }
+
+    private void initButtons() {
+        btnSССompose = (Button) view.findViewById(R.id.btnSССompose);
+        btnSССompose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eathContitionsLayout.setVisibility(LinearLayout.GONE);
+                meteoSrLayout.setVisibility(LinearLayout.VISIBLE);
+            }
+        });
+        //btnSССompose = (Button) view.findViewById(R.id.btnSССompose);
+        //btnSСFill = (Button) view.findViewById(R.id.btnSСFill);
     }
 }
