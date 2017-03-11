@@ -740,6 +740,17 @@
             </LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/btnBackMeteo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/btn_back"
+            android:textColor="@color/textButton"
+            android:background="@color/colorPrimary"/>
+
     </LinearLayout>
 
 </LinearLayout>

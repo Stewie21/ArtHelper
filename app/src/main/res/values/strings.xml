@@ -63,5 +63,6 @@
     <string name="tab4_h_dmk">выс ДМК</string>
     <string name="tab4_press">давл</string>
     <string name="tab4_temper">темп</string>
+    <string name="btn_back">Назад</string>
 
 </resources>

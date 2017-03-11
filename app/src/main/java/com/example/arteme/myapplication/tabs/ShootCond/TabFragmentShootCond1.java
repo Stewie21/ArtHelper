@@ -8,18 +8,43 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.example.arteme.myapplication.R;
+import com.example.arteme.myapplication.weather.Channel;
+import com.example.arteme.myapplication.weather.Interfaces.IWeatherReceiver;
+import com.example.arteme.myapplication.weather.WeatherGetter;
+import com.example.arteme.myapplication.weather.data.Item;
 
 public class TabFragmentShootCond1 extends Fragment {
 
     private static final int LAYOUT = R.layout.tab1_shootcond;
     private View view;
     private Button btnSССompose;
+    private Button btnSСDownload;
+    private Button btnSСFill;
+    private Button btnSCBack;
     private LinearLayout eathContitionsLayout;
     private LinearLayout meteoSrLayout;
+    private EditText editPress;
+    private EditText editTemper;
+    private EditText editDirection;
+    private EditText editWindSpeed;
+    private EditText editHeightMeteo;
+
+    private IWeatherReceiver mIWeatherReceiver = new IWeatherReceiver() {
+        @Override
+        public void onReceiveWeather(Channel channel) {
+            Item item = channel.getItem();
+            editPress.setText(Integer.toString(item.getAtmosphere()));
+            editDirection.setText(Integer.toString(item.getWindDirection()));
+            editHeightMeteo.setText("0");
+            editTemper.setText(Integer.toString(item.getTemperature()));
+            editWindSpeed.setText(Double.toString(item.getWindSpeed()));
+        }
+    };
 
     public static TabFragmentShootCond1 getInstance(){
         Bundle args = new Bundle();
@@ -64,7 +89,23 @@ public class TabFragmentShootCond1 extends Fragment {
                 meteoSrLayout.setVisibility(LinearLayout.VISIBLE);
             }
         });
-        //btnSССompose = (Button) view.findViewById(R.id.btnSССompose);
+
+        btnSСDownload = (Button) view.findViewById(R.id.btnSСDownload);
+        btnSСDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new WeatherGetter(getContext(), mIWeatherReceiver).uploadWeather();
+            }
+        });
+
+        btnSCBack = (Button) view.findViewById(R.id.btnBackMeteo);
+        btnSCBack.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                eathContitionsLayout.setVisibility(LinearLayout.VISIBLE);
+                meteoSrLayout.setVisibility(LinearLayout.GONE);
+            }
+        });
         //btnSСFill = (Button) view.findViewById(R.id.btnSСFill);
     }
 }
