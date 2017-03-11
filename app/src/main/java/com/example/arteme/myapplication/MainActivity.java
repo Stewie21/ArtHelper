@@ -23,4 +23,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityShootCond.class);
         startActivity(intent);
     }
+
+   /* public void olololo() {
+
+    }*/
 }
