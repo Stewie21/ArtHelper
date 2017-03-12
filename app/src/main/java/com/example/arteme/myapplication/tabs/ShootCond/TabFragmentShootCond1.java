@@ -22,17 +22,10 @@ public class TabFragmentShootCond1 extends Fragment {
 
     private static final int LAYOUT = R.layout.tab1_shootcond;
     private View view;
-    private Button btnSССompose;
-    private Button btnSСDownload;
-    private Button btnSСFill;
-    private Button btnSCBack;
-    private LinearLayout eathContitionsLayout;
-    private LinearLayout meteoSrLayout;
-    private EditText editPress;
-    private EditText editTemper;
-    private EditText editDirection;
-    private EditText editWindSpeed;
-    private EditText editHeightMeteo;
+    private Button btnSССompose, btnSСDownload, btnSСFill, btnSCBack;
+    private LinearLayout eathContitionsLayout, meteoSrLayout;
+    private EditText editPress, editTemper, editDirection, editWindSpeed, editHeightMeteo;
+    private EditText edtMeteoT02, edtMeteoT04, edtMeteoT08, edtMeteoT12, edtMeteoT16, edtMeteoT20, edtMeteoT24, edtMeteoT30, edtMeteoT40;
 
     private IWeatherReceiver mIWeatherReceiver = new IWeatherReceiver() {
         @Override
@@ -87,6 +80,32 @@ public class TabFragmentShootCond1 extends Fragment {
             public void onClick(View v) {
                 eathContitionsLayout.setVisibility(LinearLayout.GONE);
                 meteoSrLayout.setVisibility(LinearLayout.VISIBLE);
+
+                EditText[] arrEditMeteoT = new EditText[9];
+                edtMeteoT02 = (EditText) view.findViewById(R.id.edtMeteoT02);
+                arrEditMeteoT[0] = edtMeteoT02;
+                edtMeteoT04 = (EditText) view.findViewById(R.id.edtMeteoT04);
+                arrEditMeteoT[1] = edtMeteoT04;
+                edtMeteoT08 = (EditText) view.findViewById(R.id.edtMeteoT08);
+                arrEditMeteoT[2] = edtMeteoT08;
+                edtMeteoT12 = (EditText) view.findViewById(R.id.edtMeteoT12);
+                arrEditMeteoT[3] = edtMeteoT12;
+                edtMeteoT16 = (EditText) view.findViewById(R.id.edtMeteoT16);
+                arrEditMeteoT[4] = edtMeteoT16;
+                edtMeteoT20 = (EditText) view.findViewById(R.id.edtMeteoT20);
+                arrEditMeteoT[5] = edtMeteoT20;
+                edtMeteoT24 = (EditText) view.findViewById(R.id.edtMeteoT24);
+                arrEditMeteoT[6] = edtMeteoT24;
+                edtMeteoT30 = (EditText) view.findViewById(R.id.edtMeteoT30);
+                arrEditMeteoT[7] = edtMeteoT30;
+                edtMeteoT40 = (EditText) view.findViewById(R.id.edtMeteoT40);
+                arrEditMeteoT[8] = edtMeteoT40;
+
+                editTemper = (EditText) view.findViewById(R.id.editTemper);
+
+
+                for(int i = 0; i < arrEditMeteoT.length; i++)
+                    arrEditMeteoT[i].setText(strDelTv(delTv(Integer.valueOf(editTemper.getText().toString()))));
             }
         });
 
@@ -107,5 +126,41 @@ public class TabFragmentShootCond1 extends Fragment {
             }
         });
         //btnSСFill = (Button) view.findViewById(R.id.btnSСFill);
+    }
+
+     private double delTv(double realT){
+
+        double arrDelTv[] = {0.5, 1, 1.5, 2, 3.5, 4.5};
+        double retDelTv = 0;
+
+        if(realT < 0)
+            retDelTv = realT - 15.9;
+        else if(realT >= 0 & realT <= 5)
+            retDelTv = (realT + arrDelTv[0]) - 15.9;
+        else if(realT > 5 & realT < 10)
+            retDelTv = (realT + arrDelTv[0] + 0.1*(realT - 5)) - 15.9;
+         else if(realT >= 10 & realT <= 15)
+            retDelTv = (realT + arrDelTv[1]) - 15.9;
+         else if(realT > 15 & realT < 20)
+            retDelTv = (realT + arrDelTv[1] + 0.1*(realT - 15)) - 15.9;
+         else if(realT >= 20 & realT <= 25)
+            retDelTv = (realT + arrDelTv[2] + 0.1*(realT - 20)) - 15.9;
+         else if(realT > 25 & realT <= 30)
+            retDelTv = (realT + arrDelTv[3] + 0.3*(realT - 25)) - 15.9;
+         else if(realT > 30 & realT <= 40)
+            retDelTv = (realT + arrDelTv[4] + 0.1*(realT - 30)) - 15.9;
+         else
+            retDelTv = (realT + arrDelTv[5]) - 15.9;
+
+         return Math.round(retDelTv);
+     }
+
+    private String strDelTv(double delTv){
+        String retStrDelTv = "";
+
+        if(delTv < 10)
+            retStrDelTv ="0" + String.valueOf((int)delTv);
+
+        return retStrDelTv;
     }
 }

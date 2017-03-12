@@ -5,7 +5,7 @@
 
 <LinearLayout
     android:id="@+id/linearEathConditions"
-    android:visibility="visible"
+    android:visibility="gone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -225,7 +225,7 @@
 
     <LinearLayout
         android:id="@+id/linearMeteoSr"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -386,6 +386,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab" />
                 <EditText
+                    android:id="@+id/edtMeteoT02"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -435,6 +436,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab" />
                 <EditText
+                    android:id="@+id/edtMeteoT04"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -481,6 +483,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab" />
                 <EditText
+                    android:id="@+id/edtMeteoT08"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -527,6 +530,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab" />
                 <EditText
+                    android:id="@+id/edtMeteoT12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -573,6 +577,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab"/>
                 <EditText
+                    android:id="@+id/edtMeteoT16"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -619,6 +624,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab" />
                 <EditText
+                    android:id="@+id/edtMeteoT20"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -665,6 +671,7 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab" />
                 <EditText
+                    android:id="@+id/edtMeteoT24"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -711,6 +718,54 @@
                     android:layout_marginBottom="2dp"
                     android:background="@color/colorHeaderTab" />
                 <EditText
+                    android:id="@+id/edtMeteoT30"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:inputType="none"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/textButton"
+                    android:layout_weight="1"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:inputType="none"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/textButton"
+                    android:layout_weight="1"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:inputType="none"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/textButton"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_tabl"
+                android:layout_weight="1"
+                android:background="@color/textBlack"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:text="40"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/textBlack"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/colorHeaderTab" />
+                <EditText
+                    android:id="@+id/edtMeteoT40"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
