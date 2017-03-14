@@ -105,7 +105,7 @@ public class TabFragmentShootCond1 extends Fragment {
 
 
                 for(int i = 0; i < arrEditMeteoT.length; i++)
-                    arrEditMeteoT[i].setText(strDelTv(delTv(Integer.valueOf(editTemper.getText().toString()))));
+                    arrEditMeteoT[i].setText(strDelTv(delTv(Integer.valueOf(editTemper.getText().toString()), i)));
             }
         });
 
@@ -128,7 +128,7 @@ public class TabFragmentShootCond1 extends Fragment {
         //btnSСFill = (Button) view.findViewById(R.id.btnSСFill);
     }
 
-     private double delTv(double realT){
+     private double delTv(double realT, int hYbull){
 
         double arrDelTv[] = {0.5, 1, 1.5, 2, 3.5, 4.5};
         double retDelTv = 0;
@@ -139,28 +139,91 @@ public class TabFragmentShootCond1 extends Fragment {
             retDelTv = (realT + arrDelTv[0]) - 15.9;
         else if(realT > 5 & realT < 10)
             retDelTv = (realT + arrDelTv[0] + 0.1*(realT - 5)) - 15.9;
-         else if(realT >= 10 & realT <= 15)
+        else if(realT >= 10 & realT <= 15)
             retDelTv = (realT + arrDelTv[1]) - 15.9;
-         else if(realT > 15 & realT < 20)
+        else if(realT > 15 & realT < 20)
             retDelTv = (realT + arrDelTv[1] + 0.1*(realT - 15)) - 15.9;
-         else if(realT >= 20 & realT <= 25)
+        else if(realT >= 20 & realT <= 25)
             retDelTv = (realT + arrDelTv[2] + 0.1*(realT - 20)) - 15.9;
-         else if(realT > 25 & realT <= 30)
+        else if(realT > 25 & realT <= 30)
             retDelTv = (realT + arrDelTv[3] + 0.3*(realT - 25)) - 15.9;
-         else if(realT > 30 & realT <= 40)
+        else if(realT > 30 & realT <= 40)
             retDelTv = (realT + arrDelTv[4] + 0.1*(realT - 30)) - 15.9;
-         else
+        else
             retDelTv = (realT + arrDelTv[5]) - 15.9;
 
-         return Math.round(retDelTv);
+         retDelTv = Math.round(retDelTv);
+
+         if(retDelTv < 0) {
+             switch (hYbull) {
+                 case 0:
+                     int temH02[] = {-1, -2, -3, -4, -5, -6, -7, -8, -8, -9, -20, -29, -39, -49};// 10(-20) 11(-30) 12(-40) 13(-50)
+                     retDelTv = minusTv(temH02, retDelTv);
+                     break;
+                 case 1:
+                     int temH04[] = {-1, -2, -3, -4, -5, -6, -7, -7, -8, -9, -19, -29, -38, -48};
+                     retDelTv = minusTv(temH04, retDelTv);
+                     break;
+                 case 2:
+                     int temH08[] = {-1, -2, -3, -4, -5, -6, -6, -7, -7, -8, -18, -28, -37, -46};
+                     retDelTv = minusTv(temH08, retDelTv);
+                     break;
+                 case 3:
+                     int temH12[] = {-1, -2, -3, -4, -4, -5, -5, -6, -7, -8, -17, -26, -35, -44};
+                     retDelTv = minusTv(temH12, retDelTv);
+                     break;
+                 case 4:
+                     int temH16[] = {-1, -2, -3, -3, -4, -4, -5, -6, -7, -7, -17, -25, -34, -42};
+                     retDelTv = minusTv(temH16, retDelTv);
+                     break;
+                 case 5:
+                     int temH20[] = {-1, -2, -3, -3, -4, -4, -5, -6, -6, -7, -16, -24, -32, -40};
+                     retDelTv = minusTv(temH20, retDelTv);
+                     break;
+                 case 6:
+                     int temH24[] = {-1, -2, -3, -3, -4, -4, -5, -5, -6, -7, -15, -23, -31, -38};
+                     retDelTv = minusTv(temH24, retDelTv);
+                     break;
+                 case 7:
+                     int temH30[] = {-1, -2, -3, -3, -4, -4, -4, -5, -5, -6, -15, -22, -30, -37};
+                     retDelTv = minusTv(temH30, retDelTv);
+                     break;
+                 case 8:
+                     int temH40[] = {-1, -2, -3, -3, -4, -4, -4, -4, -5, -6, -14, -20, -27, -34};
+                     retDelTv = minusTv(temH40, retDelTv);
+                     break;
+             }
+         }
+
+         return retDelTv;
      }
+
 
     private String strDelTv(double delTv){
         String retStrDelTv = "";
 
-        if(delTv < 10)
+        if(delTv < 10 & delTv >= 0)
             retStrDelTv ="0" + String.valueOf((int)delTv);
+        else
+            retStrDelTv = String.valueOf((int)delTv*(-1) + 50);
 
         return retStrDelTv;
+    }
+
+    private double minusTv(int minusTem[], double delTv )
+    {
+        if((int)delTv < -10)
+        {
+            int ostDel = (int)delTv%10;
+            int celDel = ((int)delTv - ostDel)/10;
+            if(ostDel == 0)
+                delTv = minusTem[9 + celDel*(-1) - 1];
+            else
+                delTv = minusTem[9 + celDel*(-1) - 1] + minusTem[ostDel*(-1) - 1];
+        }
+        else
+            delTv = (double)minusTem[(int)delTv*(-1) - 1];
+
+        return delTv;
     }
 }
